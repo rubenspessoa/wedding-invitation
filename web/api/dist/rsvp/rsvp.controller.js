@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RsvpController = void 0;
 const rsvp_schema_1 = require("./rsvp.schema");
 const rsvp_service_1 = require("./rsvp.service");
+const jwt_auth_guard_1 = require("../auth/guards/jwt-auth.guard");
 const common_1 = require("@nestjs/common");
 let RsvpController = class RsvpController {
     constructor(service) {
@@ -37,6 +38,7 @@ let RsvpController = class RsvpController {
     }
 };
 __decorate([
+    common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
     common_1.Post(),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
@@ -44,12 +46,14 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], RsvpController.prototype, "create", null);
 __decorate([
+    common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
     common_1.Get('all'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], RsvpController.prototype, "getAll", null);
 __decorate([
+    common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
     common_1.Get(':id'),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
@@ -57,6 +61,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], RsvpController.prototype, "get", null);
 __decorate([
+    common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
     common_1.Put(':id'),
     __param(0, common_1.Param('id')),
     __param(1, common_1.Body()),
@@ -65,6 +70,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], RsvpController.prototype, "update", null);
 __decorate([
+    common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
     common_1.Delete(':id'),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),

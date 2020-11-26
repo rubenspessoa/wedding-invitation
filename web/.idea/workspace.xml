@@ -20,18 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47ffc6e1-5575-4d15-9686-2923c7b2bee2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/backend/dist/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dist/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dist/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dist/main.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dist/rsvp/rsvp.controller.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dist/rsvp/rsvp.controller.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dist/rsvp/rsvp.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dist/rsvp/rsvp.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dist/rsvp/rsvp.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dist/rsvp/rsvp.controller.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dist/tsconfig.build.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dist/tsconfig.build.tsbuildinfo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/app.controller.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/app.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/app.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/app.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/rsvp/rsvp.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/rsvp/rsvp.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dist/app.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/dist/app.module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dist/app.module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/api/dist/app.module.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dist/tsconfig.build.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/api/dist/tsconfig.build.tsbuildinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +42,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -73,6 +68,7 @@
       <workItem from="1604309957929" duration="184000" />
       <workItem from="1604396097634" duration="171000" />
       <workItem from="1604416503761" duration="205000" />
+      <workItem from="1606410058761" duration="99000" />
     </task>
     <servers />
   </component>

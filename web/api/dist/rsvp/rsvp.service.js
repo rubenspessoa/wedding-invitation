@@ -23,27 +23,46 @@ let RsvpService = class RsvpService {
     }
     create(createDto) {
         const createdRsvp = new this.rsvpModel(createDto);
+        if (!createdRsvp) {
+            throw new common_1.HttpException('Answer was not created.', common_1.HttpStatus.BAD_REQUEST);
+        }
         return createdRsvp.save();
     }
     async getAll() {
-        return this.rsvpModel.find().exec();
+        const allAnswers = await this.rsvpModel.find().exec();
+        if (!allAnswers) {
+            throw new common_1.HttpException('No answers found.', common_1.HttpStatus.NOT_FOUND);
+        }
+        return allAnswers;
     }
     async get(id) {
-        return this.rsvpModel
+        const answer = this.rsvpModel
             .findOne()
             .where('id')
             .equals(id)
             .exec();
+        if (!answer) {
+            throw new common_1.HttpException('Answer not found.', common_1.HttpStatus.NOT_FOUND);
+        }
+        return answer;
     }
     async update(id, updateDto) {
-        return this.rsvpModel
+        const answer = this.rsvpModel
             .findOneAndUpdate({ id: id }, updateDto, {
             new: true,
         })
             .exec();
+        if (!answer) {
+            throw new common_1.HttpException('Answer not updated.', common_1.HttpStatus.BAD_REQUEST);
+        }
+        return answer;
     }
     async delete(id) {
-        return this.rsvpModel.findOneAndDelete({ id: id }).exec();
+        const answer = this.rsvpModel.findOneAndDelete({ id: id }).exec();
+        if (!answer) {
+            throw new common_1.HttpException('Answer was not deleted.', common_1.HttpStatus.BAD_REQUEST);
+        }
+        return answer;
     }
 };
 RsvpService = __decorate([
