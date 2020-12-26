@@ -44,7 +44,10 @@ class RsvpService {
             },
           },
         )
-        .then((response) => response.data)
+        .then((response) => {
+          alert('Resposta enviada com sucesso.');
+          return response.data;
+        })
         .catch((error) => {
           console.log(error);
           return undefined;
@@ -80,7 +83,10 @@ class RsvpService {
             },
           },
         )
-        .then((response) => response.data)
+        .then((response) => {
+          alert('Resposta enviada com sucesso.');
+          return response.data;
+        })
         .catch((error) => {
           console.log(error);
           return undefined;

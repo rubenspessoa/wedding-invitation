@@ -1757,7 +1757,7 @@
         "affectsGlobalScope": false
       },
       "../src/rsvp/rsvp.controller.ts": {
-        "version": "2f3453f4295230be2c4373267530a55108a35387ddad2f47a46b219ad8c027a1",
+        "version": "7905a016d2c82edd6d0448585651acfb78477f18d56d0f152a6d75363f630f52",
         "signature": "5a3dd7a43eb7f5cf734e7c046abd5b14cd404a94ab7ab0c0483a7eccc05113aa",
         "affectsGlobalScope": false
       },
