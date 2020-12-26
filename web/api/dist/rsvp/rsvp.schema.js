@@ -15,10 +15,6 @@ let Rsvp = class Rsvp {
 };
 __decorate([
     mongoose_1.Prop({ required: true }),
-    __metadata("design:type", Number)
-], Rsvp.prototype, "frontendId", void 0);
-__decorate([
-    mongoose_1.Prop({ required: true }),
     __metadata("design:type", String)
 ], Rsvp.prototype, "name", void 0);
 __decorate([

@@ -6,9 +6,6 @@ export type RsvpDocument = Rsvp & Document;
 @Schema()
 export class Rsvp {
   @Prop({ required: true })
-  frontendId: number;
-
-  @Prop({ required: true })
   name: string;
 
   @Prop({ required: true })
@@ -30,7 +27,6 @@ export class Rsvp {
 export const RsvpSchema = SchemaFactory.createForClass(Rsvp);
 
 export class CreateRsvpDto {
-  frontendId: number;
   name: string;
   isGoing: boolean;
   isStayingAtHotel: boolean;

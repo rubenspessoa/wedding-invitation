@@ -41,6 +41,7 @@ export class RsvpController {
     @Param('id') id: string,
     @Body() updateRsvpDto: CreateRsvpDto,
   ): Promise<RsvpDocument> {
+    console.log('request id', id);
     return this.service.update(id, updateRsvpDto);
   }
 

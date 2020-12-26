@@ -20,14 +20,14 @@ let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
     }
-    async login(req) {
-        return this.authService.login(req.user);
+    async login(body) {
+        return this.authService.signJwt(body.username);
     }
 };
 __decorate([
     common_1.UseGuards(local_auth_guard_1.LocalAuthGuard),
     common_1.Post('login'),
-    __param(0, common_1.Request()),
+    __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)

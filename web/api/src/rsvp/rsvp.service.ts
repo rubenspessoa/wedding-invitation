@@ -29,12 +29,7 @@ export class RsvpService {
   }
 
   async get(id: string): Promise<RsvpDocument> {
-    const answer = this.rsvpModel
-      .findOne()
-      .where('id')
-      .equals(id)
-      .exec();
-
+    const answer = await this.rsvpModel.findOne({ name: id }).exec();
     if (!answer) {
       throw new HttpException('Answer not found.', HttpStatus.NOT_FOUND);
     }
@@ -42,9 +37,10 @@ export class RsvpService {
   }
 
   async update(id: string, updateDto: CreateRsvpDto): Promise<RsvpDocument> {
-    const answer = this.rsvpModel
-      .findOneAndUpdate({ id: id }, updateDto, {
+    const answer = await this.rsvpModel
+      .findOneAndUpdate({ _id: id }, updateDto, {
         new: true,
+        useFindAndModify: false,
       })
       .exec();
     if (!answer) {

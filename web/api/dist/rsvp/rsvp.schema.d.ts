@@ -1,7 +1,6 @@
 import { Document } from 'mongoose';
 export declare type RsvpDocument = Rsvp & Document;
 export declare class Rsvp {
-    frontendId: number;
     name: string;
     isGoing: boolean;
     isStayingAtHotel: boolean;
@@ -11,7 +10,6 @@ export declare class Rsvp {
 }
 export declare const RsvpSchema: import("mongoose").Schema<any>;
 export declare class CreateRsvpDto {
-    frontendId: number;
     name: string;
     isGoing: boolean;
     isStayingAtHotel: boolean;

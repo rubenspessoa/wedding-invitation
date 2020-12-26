@@ -36,20 +36,17 @@ let RsvpService = class RsvpService {
         return allAnswers;
     }
     async get(id) {
-        const answer = this.rsvpModel
-            .findOne()
-            .where('id')
-            .equals(id)
-            .exec();
+        const answer = await this.rsvpModel.findOne({ name: id }).exec();
         if (!answer) {
             throw new common_1.HttpException('Answer not found.', common_1.HttpStatus.NOT_FOUND);
         }
         return answer;
     }
     async update(id, updateDto) {
-        const answer = this.rsvpModel
-            .findOneAndUpdate({ id: id }, updateDto, {
+        const answer = await this.rsvpModel
+            .findOneAndUpdate({ _id: id }, updateDto, {
             new: true,
+            useFindAndModify: false,
         })
             .exec();
         if (!answer) {

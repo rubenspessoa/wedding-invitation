@@ -37,10 +37,9 @@ let AuthService = class AuthService {
         }
         return null;
     }
-    async login(user) {
-        const payload = { username: user.username, sub: user.userId };
+    async signJwt(username) {
         return {
-            access_token: this.jwtService.sign(payload),
+            jwt: this.jwtService.sign({ username }),
         };
     }
 };

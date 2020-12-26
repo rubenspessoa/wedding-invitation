@@ -31,6 +31,7 @@ let RsvpController = class RsvpController {
         return this.service.get(id);
     }
     update(id, updateRsvpDto) {
+        console.log('request id', id);
         return this.service.update(id, updateRsvpDto);
     }
     delete(id) {
