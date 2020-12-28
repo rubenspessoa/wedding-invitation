@@ -5,14 +5,13 @@ import axios from 'axios';
 const API_URL = 'http://localhost:3000/api/rsvp';
 
 class RsvpService {
-  authenticatedUser = AuthService.getCurrentAuthenticatedUser();
-
   async get(name: string): Promise<NullableRsvp> {
-    if (this.authenticatedUser) {
+    const authenticatedUser = AuthService.getCurrentAuthenticatedUser();
+    if (authenticatedUser) {
       return axios
         .get<Rsvp>(`${API_URL}/${name}`, {
           headers: {
-            Authorization: `Bearer ${this.authenticatedUser.jwt}`,
+            Authorization: `Bearer ${authenticatedUser.jwt}`,
           },
         })
         .then((response) => response.data)
@@ -26,7 +25,8 @@ class RsvpService {
   }
 
   async update(rsvp: Rsvp): Promise<NullableRsvp> {
-    if (this.authenticatedUser) {
+    const authenticatedUser = AuthService.getCurrentAuthenticatedUser();
+    if (authenticatedUser) {
       return axios
         .put<Rsvp>(
           `${API_URL}/${rsvp._id}`,
@@ -40,7 +40,7 @@ class RsvpService {
           },
           {
             headers: {
-              Authorization: `Bearer ${this.authenticatedUser.jwt}`,
+              Authorization: `Bearer ${authenticatedUser.jwt}`,
             },
           },
         )
@@ -65,7 +65,8 @@ class RsvpService {
     plusOneIsStayingAtHotel: boolean,
     foodAllergies: string,
   ): Promise<NullableRsvp> {
-    if (this.authenticatedUser) {
+    const authenticatedUser = AuthService.getCurrentAuthenticatedUser();
+    if (authenticatedUser) {
       axios
         .post<Rsvp>(
           API_URL,
@@ -79,7 +80,7 @@ class RsvpService {
           },
           {
             headers: {
-              Authorization: `Bearer ${this.authenticatedUser.jwt}`,
+              Authorization: `Bearer ${authenticatedUser.jwt}`,
             },
           },
         )

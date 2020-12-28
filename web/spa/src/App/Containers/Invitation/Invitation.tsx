@@ -1,13 +1,15 @@
+import OurNavbar from '../../Components/OurNavbar/OurNavbar';
 import { NullableRsvp, Rsvp } from '../../Models/Rsvp.model';
-import AuthService from '../../Services/AuthService';
 import RsvpService from '../../Services/RsvpService';
-import { Component } from 'react';
+import { checkJwtUser } from '../../Utils/Auth';
+import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
 interface Props extends RouteComponentProps<any> { }
 
 interface State {
     rsvpId?: string;
+    username: string;
     isGoing: boolean;
     isStayingAtHotel: boolean;
     havePlusOne: boolean;
@@ -15,11 +17,11 @@ interface State {
     foodAllergies: string;
 }
 
-export class InvitationPage extends Component<Props, State> {
-    username: string = ''
+class Invitation extends Component<Props, State> {
 
     state = {
         rsvpId: undefined,
+        username: '',
         isGoing: false,
         isStayingAtHotel: false,
         havePlusOne: false,
@@ -27,27 +29,24 @@ export class InvitationPage extends Component<Props, State> {
         foodAllergies: ''
     }
 
-    async componentDidMount() {
-        this.username = this.props.location.pathname.replace('/invite/', '');
-
-        this.checkJwtUser()
-        this.checkForExistingRsvp()
+    componentDidMount() {
+        const usernameFromUrl = this.props.location.pathname.replace('/', '');
+		checkJwtUser(usernameFromUrl, () => this.props.history.push(`/verify/${usernameFromUrl}`))
+        this.setState({ username: usernameFromUrl }, () => this.shouldCheckForRsvp())
     }
 
-    checkJwtUser = () => {
-        const usernameFromJwt = AuthService.getLoggedInUsername()
+    async componentDidUpdate() {
+        this.shouldCheckForRsvp()
+    }
 
-        if (usernameFromJwt) {
-            if (usernameFromJwt !== this.username) {
-                this.props.history.push(`/${this.username}`)
-            }
-        } else {
-            this.props.history.push(`/${this.username}`)
+    shouldCheckForRsvp = () => {
+        if (this.state.username !== '' && this.state.rsvpId === undefined) {
+            this.checkForExistingRsvp()
         }
     }
 
     checkForExistingRsvp = async () => {
-        const rsvp: NullableRsvp = await RsvpService.get(this.username);
+        const rsvp: NullableRsvp = await RsvpService.get(this.state.username);
 
         if (rsvp) {
             this.setState({
@@ -67,7 +66,7 @@ export class InvitationPage extends Component<Props, State> {
         if (this.state.rsvpId !== undefined) {
             const rsvp: Rsvp = {
                 _id: this.state.rsvpId,
-                name: this.username,
+                name: this.state.username,
                 isGoing: this.state.isGoing,
                 isStayingAtHotel: this.state.isStayingAtHotel,
                 havePlusOne: this.state.havePlusOne,
@@ -77,7 +76,7 @@ export class InvitationPage extends Component<Props, State> {
             RsvpService.update(rsvp);
         } else {
             RsvpService.post(
-                this.username,
+                this.state.username,
                 this.state.isGoing,
                 this.state.isStayingAtHotel,
                 this.state.havePlusOne,
@@ -94,12 +93,11 @@ export class InvitationPage extends Component<Props, State> {
         this.setState({ ...this.state, [name]: value });
     }
 
-    render() {
+    renderForm(): JSX.Element {
         return (
             <div>
                 <p>RSVP</p>
                 <form onSubmit={this.handleSubmit}>
-                    {/* <input type="text" value={this.state.password} onChange={this.handleChange} /> */}
                     <label>
                         Are you going?
                         <input name="isGoing" type="checkbox" checked={this.state.isGoing} onChange={this.handleChange}/>
@@ -128,4 +126,14 @@ export class InvitationPage extends Component<Props, State> {
                 </form>
             </div>)
     }
+
+    render() {
+        return (
+            <OurNavbar>
+                {this.renderForm()}
+            </OurNavbar>
+        )
+    }
 }
+
+export default Invitation;

@@ -1,5 +1,5 @@
 import AuthService from '../../Services/AuthService';
-import React from 'react';
+import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
 interface Props extends RouteComponentProps<any> { }
@@ -9,7 +9,7 @@ interface State {
     password: string;
 }
 
-export class LoginPage extends React.Component<Props, State> {
+class Login extends Component<Props, State> {
     state = {
         username: '',
         password: '',
@@ -20,12 +20,12 @@ export class LoginPage extends React.Component<Props, State> {
     }
 
     checkJwtUser = () => {
-        const usernameFromUrl = this.props.location.pathname.replace('/', '');
+        const usernameFromUrl = this.props.location.pathname.replace('/verify/', '');
         const usernameFromJwt = AuthService.getLoggedInUsername()
 
         if (usernameFromJwt) {
             if (usernameFromJwt === usernameFromUrl) {
-                this.props.history.push(`/invite/${usernameFromJwt}`)
+                this.props.history.push(`/${usernameFromJwt}`)
             } else {
                 AuthService.logout()
             }
@@ -41,7 +41,7 @@ export class LoginPage extends React.Component<Props, State> {
         await AuthService.login(username, password)
 
         if (AuthService.getCurrentAuthenticatedUser()) {
-            this.props.history.push(`/invite/${username}`)
+            this.props.history.push(`/${username}`)
         }
     }
 
@@ -58,3 +58,5 @@ export class LoginPage extends React.Component<Props, State> {
         )
     }
 }
+
+export default Login;
