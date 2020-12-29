@@ -1,0 +1,25 @@
+@import '../../../Styles/colors';
+
+h1,
+h2,
+h3,
+p {
+  font-family: Dosis;
+  color: $charcoal;
+  text-align: center;
+}
+
+form {
+  text-align: center;
+}
+
+.button-color {
+  background-color: $charcoal !important;
+  border-color: $charcoal !important;
+}
+
+.form-container {
+  background-color: lightgray;
+  display: flex;
+  align-items: center;
+}

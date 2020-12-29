@@ -1,6 +1,5 @@
 import OurNavbar from '../../Components/OurNavbar/OurNavbar';
 import { checkJwtUser } from '../../Utils/Auth';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 

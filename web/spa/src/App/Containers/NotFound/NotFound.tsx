@@ -1,7 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Component } from 'react';
 import { Col, Container, Row } from 'reactstrap';
-
 class NotFound extends Component {
 	render() {
 	return(

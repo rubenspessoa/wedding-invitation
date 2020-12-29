@@ -1,5 +1,4 @@
 import AuthService from '../../Services/AuthService';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Collapse, Container, Nav, Navbar, NavbarToggler, NavItem, NavLink, Row } from 'reactstrap';
