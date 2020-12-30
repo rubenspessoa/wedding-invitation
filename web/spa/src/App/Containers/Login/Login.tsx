@@ -2,7 +2,7 @@ import './Login.scss';
 import AuthService from '../../Services/AuthService';
 import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { Button, Card, CardImg, Col, Container, Form, FormGroup, Input, Row } from 'reactstrap';
+import { Button, Card, CardImg, Col, Form, FormGroup, Input, Row } from 'reactstrap';
 
 interface Props extends RouteComponentProps<any> { }
 
@@ -66,34 +66,34 @@ class Login extends Component<Props, State> {
 
     render() {
         return (
-            <div className={'form-container'}>
-                <Container>
+            <Row className='login-form-container'>
+                <Col md={{ size: 6, offset: 3}} lg={{ size: 6, offset: 3}} xl={{ size: 6, offset: 3}}>
                     <Card body outline color="grey">
-                        <CardImg top width="100%" src="/img/header-login.jpg" alt="Card image cap" />
-                        <Form onSubmit={this.handleSubmit}>
+                        <CardImg src="/img/header-login.jpg" alt="Card image cap" />
+                        <Form onSubmit={this.handleSubmit} className="login-form">
                             <FormGroup>
                                 <Row>
                                     <Col>
-                                        <h1>Seja bem-vindo(a) ao site do nosso casamento!</h1>
-                                        <p>Aqui você poderá confirmar sua presença, bem como terá acesso à todas as informações sobre o evento.</p>
-                                        <p>Insira a senha do seu convite para prosseguir:</p>
+                                        <h1 className='login-title'>Seja bem-vindo(a) ao site do nosso casamento!</h1>
+                                        <p className='login-paragraph'>Aqui você poderá confirmar sua presença, bem como terá acesso à todas as informações sobre o evento.</p>
+                                        <p className='login-paragraph'>Insira a senha do seu convite para prosseguir:</p>
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col md={{ size: 6, offset: 3 }} lg={{ size: 6, offset: 3 }} xl={{ size: 6, offset: 3 }}>
+                                    <Col md={{ size: 6, offset: 3 }} lg={{ size: 8, offset: 2 }} xl={{ size: 8, offset: 2 }}>
                                             <Input type="text" bsSize="lg" invalid={this.isUserNotAuthenticated()} value={this.state.password} onChange={this.handleChange} />
                                     </Col>
                                 </Row>
                             </FormGroup>
                             <Row>
                                 <Col>
-                                    <Button type="submit" size='lg' className="button-color">Avançar</Button>
+                                    <Button type="submit" size='lg' className="login-button-color">Prosseguir</Button>
                                 </Col>
                             </Row>
                         </Form>
                     </Card>
-                </Container>
-            </div>
+                </Col>
+            </Row>
         )
     }
 }

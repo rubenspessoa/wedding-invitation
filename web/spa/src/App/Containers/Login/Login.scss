@@ -1,24 +1,27 @@
 @import '../../../Styles/colors';
 
-h1,
-h2,
-h3,
-p {
+.login-title,
+.login-subtitle,
+.login-paragraph {
   font-family: Dosis;
   color: $charcoal;
   text-align: center;
 }
 
-form {
+.login-form {
   text-align: center;
 }
 
-.button-color {
+.login-button-color {
   background-color: $charcoal !important;
   border-color: $charcoal !important;
 }
 
-.form-container {
+.login-card-container {
+  height: auto;
+}
+
+.login-form-container {
   background-color: lightgray;
   display: flex;
   align-items: center;

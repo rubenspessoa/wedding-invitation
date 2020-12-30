@@ -1,9 +1,11 @@
+import './Invitation.scss';
 import OurNavbar from '../../Components/OurNavbar/OurNavbar';
 import { NullableRsvp, Rsvp } from '../../Models/Rsvp.model';
 import RsvpService from '../../Services/RsvpService';
 import { checkJwtUser } from '../../Utils/Auth';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
+import { Container } from 'reactstrap';
 
 interface Props extends RouteComponentProps<any> { }
 
@@ -129,9 +131,15 @@ class Invitation extends Component<Props, State> {
 
     render() {
         return (
-            <OurNavbar>
+            <Fragment>
+                <div className="invitation-image">
+                    <OurNavbar />
+                    <Container>
+                        <h1>Testing</h1>
+                    </Container>
+                </div>
                 {this.renderForm()}
-            </OurNavbar>
+            </Fragment>
         )
     }
 }
