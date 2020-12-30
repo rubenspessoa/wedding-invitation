@@ -5,7 +5,7 @@ import RsvpService from '../../Services/RsvpService';
 import { checkJwtUser } from '../../Utils/Auth';
 import React, { Component, Fragment } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { Container } from 'reactstrap';
+import { Col, Container, Form, FormGroup, Input, Row } from 'reactstrap';
 
 interface Props extends RouteComponentProps<any> { }
 
@@ -20,7 +20,6 @@ interface State {
 }
 
 class Invitation extends Component<Props, State> {
-
     state = {
         rsvpId: undefined,
         username: '',
@@ -97,47 +96,130 @@ class Invitation extends Component<Props, State> {
 
     renderForm(): JSX.Element {
         return (
-            <div>
-                <p>RSVP</p>
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Are you going?
-                        <input name="isGoing" type="checkbox" checked={this.state.isGoing} onChange={this.handleChange}/>
-                    </label>
-                    <br />
-                    <label>
-                        Are you staying at hotel?
-                        <input name="isStayingAtHotel" type="checkbox" checked={this.state.isStayingAtHotel} onChange={this.handleChange}/>
-                    </label>
-                    <br />
-                    <label>
-                        Are you bringing someone else?
-                        <input name="havePlusOne" type="checkbox" checked={this.state.havePlusOne} onChange={this.handleChange}/>
-                    </label>
-                    <br />
-                    <label>
-                        Is he/she staying at the hotel?
-                        <input name="plusOneIsStayingAtHotel" type="checkbox" checked={this.state.plusOneIsStayingAtHotel} onChange={this.handleChange}/>
-                    </label>
-                    <br />
-                    <label>
-                        Any food allergies?
-                        <input name="foodAllergies" type="text" value={this.state.foodAllergies} onChange={this.handleChange} />
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
+            <div className="invitation-rsvp-container">
+                <Container>
+                    <Row>
+                        <Col>
+                            <img src='/img/rsvp.gif' alt='rsvp' className='invitation-rsvp-image' />
+                        </Col>
+                    </Row>
+                    <Form onSubmit={this.handleSubmit} className="invitation-rsvp-form">
+                        <FormGroup>
+                            <Row>
+                                <Col xs={6} sm={6}>
+                                    <p className="invitation-rsvp-text">Nome do convidado:</p>
+                                </Col>
+                                <Col xs={6} sm={6}>
+                                    <Input name="isGoing" type="text" value={this.state.username} disabled className="invitation-rsvp-text"/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={10} sm={10}>
+                                    <p className="invitation-rsvp-text">Comparecerá?</p>
+                                </Col>
+                                <Col xs={2} sm={2}>
+                                    <Input name="isGoing" type="checkbox" checked={this.state.isGoing} onChange={this.handleChange} className="invitation-rsvp-text"/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={10} sm={10}>
+                                    <p className="invitation-rsvp-text">Ficará na pousada*?</p>
+                                </Col>
+                                <Col xs={2} sm={2}>
+                                    <Input name="isStayingAtHotel" type="checkbox" checked={this.state.isStayingAtHotel} onChange={this.handleChange}/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={10} sm={10}>
+                                    <p className="invitation-rsvp-text">Levará acompanhante?</p>
+                                </Col>
+                                <Col xs={2} sm={2}>
+                                    <Input name="havePlusOne" type="checkbox" checked={this.state.havePlusOne} onChange={this.handleChange}/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={10} sm={10}>
+                                    <p className="invitation-rsvp-text">Acompanhante ficará na pousada*?</p>
+                                </Col>
+                                <Col xs={2} sm={2}>
+                                    <Input name="plusOneIsStayingAtHotel" type="checkbox" checked={this.state.plusOneIsStayingAtHotel} onChange={this.handleChange}/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <p className="invitation-rsvp-text">Observações (ex.: restrição alimentar, nome do(a) acompanhante, etc):</p>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Input name="foodAllergies" type="textarea" value={this.state.foodAllergies} onChange={this.handleChange} />
+                                </Col>
+                            </Row>
+                            <Input type="submit" value="Enviar" className="invitation-rsvp-submit" />
+                        </FormGroup>
+                    </Form>
+                    <Row>
+                        <Col>
+                            <p className="invitation-rsvp-observation">
+                                *A estadia na Pousada Villa das Palmeiras se inicia às 14h00 do dia 19 de Fevereiro de 2021 e se encerra às 12h00 do dia 21 de Fevereiro de 2021. O valor total é de R$125,00 por pessoa para os dois dias com cafés da manhã inclusos, devendo o valor ser pago com antecedência para os noivos até o dia 20 de Janeiro de 2021 com destino à conta bancária: <br /> <br />
+                                Banco 260 - Nu Pagamentos S.A. <br />
+                                Agência: 0001 <br />
+                                Conta: 7980621-6 <br />
+                                CPF: 099.041.464-70. <br />
+                                Nome: Vanessa Soares Vieira
+                            </p>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <img src='/img/thx.gif' alt='thank you' className='invitation-rsvp-image' />
+                        </Col>
+                    </Row>
+                </Container>
             </div>)
+    }
+
+    renderHeader = (): JSX.Element => {
+        return (
+            <div className="invitation-image">
+                <OurNavbar />
+            </div>
+        );
+    }
+
+    renderMessage = (): JSX.Element => {
+        return (
+            <div className="invitation-message-container">
+                <Container>
+                    <Row>
+                        <Col>
+                            <img src='/img/coroa.png' alt='flower' className='invitation-message-image' />
+                            <h1 className="invitation-message-title">Convite</h1>
+                            <h3 className="invitation-message-subtitle">E ainda que tivesse o dom de profecia, e conhecesse todos os mistérios e toda a ciência, e ainda que tivesse toda a fé, de maneira tal que transportasse os montes, e não tivesse amor, nada seria. <br />
+                            (1 Coríntios 13:2)
+                            </h3>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <p className="invitation-message-paragraph">
+                                Convidamos você para a cerimônia do nosso casamento que será realizada às 15:00 do dia 20 de Fevereiro de 2021 na Pousada Villa das Palmeiras em Ipioca/AL. Após a cerimônia, os convidados serão recepcionados no mesmo local.
+                            </p>
+                            <p className="invitation-message-paragraph">
+                            Também o(a) convidamos para passar o fim de semana da cerimônia conosco na pousada. Para mais informações, avance às próximas seções desta mesma página.
+                            </p>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+        )
     }
 
     render() {
         return (
             <Fragment>
-                <div className="invitation-image">
-                    <OurNavbar />
-                    <Container>
-                        <h1>Testing</h1>
-                    </Container>
-                </div>
+                {this.renderHeader()}
+                {this.renderMessage()}
                 {this.renderForm()}
             </Fragment>
         )

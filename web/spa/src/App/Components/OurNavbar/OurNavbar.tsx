@@ -29,7 +29,7 @@ class OurNavbar extends Component<{}, State> {
 						<NavLink tag={Link} to={`/${AuthService.getLoggedInUsername() || ''}/our-story`}>Nossa História</NavLink>
 					</NavItem>
 					<NavItem>
-						<NavLink tag={Link} to={`/${AuthService.getLoggedInUsername() || ''}/gifts`}>Presentes</NavLink>
+						<NavLink tag={Link} to={`/${AuthService.getLoggedInUsername() || ''}/gifts`}>Lista de Presentes</NavLink>
 					</NavItem>
 					<NavItem>
 						<NavLink tag={Link} to={`/${AuthService.getLoggedInUsername() || ''}/schedule`}>Programação</NavLink>
