@@ -69,7 +69,7 @@ class Login extends Component<Props, State> {
             <Row className='login-form-container'>
                 <Col md={{ size: 6, offset: 3}} lg={{ size: 6, offset: 3}} xl={{ size: 6, offset: 3}}>
                     <Card body outline color="grey">
-                        <CardImg src="/img/header-login.jpg" alt="Card image cap" />
+                        <CardImg src="/img/login-header-image.jpg" alt="vanessa e rubens dando as mãos" />
                         <Form onSubmit={this.handleSubmit} className="login-form">
                             <FormGroup>
                                 <Row>

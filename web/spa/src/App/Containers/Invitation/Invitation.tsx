@@ -161,7 +161,7 @@ class Invitation extends Component<Props, State> {
                     <Row>
                         <Col>
                             <p className="invitation-rsvp-observation">
-                                *A estadia na Pousada Villa das Palmeiras se inicia às 14h00 do dia 19 de Fevereiro de 2021 e se encerra às 12h00 do dia 21 de Fevereiro de 2021. O valor total é de R$125,00 por pessoa para os dois dias com cafés da manhã inclusos, devendo o valor ser pago com antecedência para os noivos até o dia 20 de Janeiro de 2021 com destino à conta bancária: <br /> <br />
+                                *Os valores relacionados às estadias devem ser transferidos para esta conta bancária: <br /> <br />
                                 Banco 260 - Nu Pagamentos S.A. <br />
                                 Agência: 0001 <br />
                                 Conta: 7980621-6 <br />
@@ -187,7 +187,7 @@ class Invitation extends Component<Props, State> {
         );
     }
 
-    renderMessage = (): JSX.Element => {
+    renderInvitation = (): JSX.Element => {
         return (
             <div className="invitation-message-container">
                 <Container>
@@ -215,11 +215,65 @@ class Invitation extends Component<Props, State> {
         )
     }
 
+    renderDetails = (): JSX.Element => {
+        return (
+            <div className="invitation-details-container">
+                <Container>
+                    <Row>
+                        <Col>
+                            <h1 className="invitation-details-title">Os detalhes</h1>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <p className="invitation-details-paragraph">
+                                Nós reservamos toda a pousada para acomodar os convidados que desejam passar conosco esse final de semana que será tão especial para nós!
+                            </p>
+                            <p className="invitation-details-paragraph">
+                                A estadia se dará na Pousada Villa das Palmeiras, que fica localizada na rodovia AL-101 NORTE, S/N - Ipioca, AL. CEP 57039-700. Iniciaremos o check-in às 14:00 do dia 19/02 e faremos checkout às 12:00 do dia 21/02. Como a cerimônia e a recepção serão feitas no mesmo local, poderemos curtir a festa, dormir, tomar um belo café da manhã no domingo e voltar para casa seguros!
+                            </p>
+                            <p className="invitation-details-paragraph">
+                                Para fazer sua reserva, cada convidado deverá nos transferir* o valor de R$125,00/pessoa até o dia 20 de Janeiro de 2021. Nós repassaremos o valor para o dono da pousada e distribuiremos cada convidado e seus acompanhantes nos chalés para o maior conforto e segurança de todos.
+                            </p>
+                            <p className="invitation-details-paragraph">
+                                A estadia incluirá café da manhã regional, porém, cada convidado arcará com os custos das suas outras refeições, com a exceção do jantar no dia 20/02, que será realizado durante a recepção do casamento. Mas, relaxe! Nas proximidades da pousada existem várias opções de restaurantes que estarão disponíveis durante nossa estadia na pousada!
+                            </p>
+                            <p className="invitation-details-paragraph">
+                                E... além da pousada possuir uma piscina, estaremos bem pertinho da praia de Ipioca, então é beeem recomendado levar roupa de banho, toalha, canga, óculos de sol, chapéu, etc! Também recomendamos beber muita água e usar protetor solar porque vai tá quente, viu?
+                            </p>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+        );
+    }
+
+    renderCovidDetails = (): JSX.Element => {
+        return (
+            <div className="invitation-message-container">
+                <Container>
+                    <Row>
+                        <Col>
+                            <p className="invitation-message-paragraph">
+                                Convidamos você para a cerimônia do nosso casamento que será realizada às 15:00 do dia 20 de Fevereiro de 2021 na Pousada Villa das Palmeiras em Ipioca/AL. Após a cerimônia, os convidados serão recepcionados no mesmo local.
+                            </p>
+                            <p className="invitation-message-paragraph">
+                            Também o(a) convidamos para passar o fim de semana da cerimônia conosco na pousada. Para mais informações, avance às próximas seções desta mesma página.
+                            </p>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+        );
+    }
+
     render() {
         return (
             <Fragment>
                 {this.renderHeader()}
-                {this.renderMessage()}
+                {this.renderInvitation()}
+                {this.renderDetails()}
+                {this.renderCovidDetails()}
                 {this.renderForm()}
             </Fragment>
         )
