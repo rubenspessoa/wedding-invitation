@@ -1,3 +1,4 @@
+import './Schedule.scss';
 import OurNavbar from '../../Components/OurNavbar/OurNavbar';
 import { checkJwtUser } from '../../Utils/Auth';
 import { Component } from 'react';
@@ -12,13 +13,11 @@ class Schedule extends Component<Props> {
     }
 
 	render() {
-        return(
-			<div>
-				<OurNavbar>
-					<h1>This will be the schedule</h1>
-				</OurNavbar>
-			</div>
-        );
+		return (
+      <div className="schedule-image">
+        <OurNavbar />
+      </div>
+    );
 	}
 }
 
