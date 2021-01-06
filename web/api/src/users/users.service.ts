@@ -20,4 +20,19 @@ export class UsersService {
 
     return user;
   }
+
+  async publiclySafeFindOne(name: string): Promise<UserDocument> {
+    const user = await this.userModel
+      .findOne()
+      .select(['_id', 'name', 'havePlusOne'])
+      .where('name')
+      .equals(name)
+      .exec();
+
+    if (!user) {
+      throw new HttpException('User not found.', HttpStatus.NOT_FOUND);
+    }
+
+    return user;
+  }
 }

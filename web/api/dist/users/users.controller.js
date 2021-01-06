@@ -15,15 +15,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 const users_service_1 = require("./users.service");
 const common_1 = require("@nestjs/common");
+const jwt_auth_guard_1 = require("../auth/guards/jwt-auth.guard");
 let UsersController = class UsersController {
     constructor(usersService) {
         this.usersService = usersService;
     }
     getUser(name) {
-        return this.usersService.findOne(name);
+        return this.usersService.publiclySafeFindOne(name);
     }
 };
 __decorate([
+    common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
     common_1.Get(':name'),
     __param(0, common_1.Param('name')),
     __metadata("design:type", Function),

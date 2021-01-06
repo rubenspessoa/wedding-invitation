@@ -1,7 +1,9 @@
 import './Invitation.scss';
 import OurNavbar from '../../Components/OurNavbar/OurNavbar';
 import { NullableRsvp, Rsvp } from '../../Models/Rsvp.model';
+import { NullableUser } from '../../Models/User.model';
 import RsvpService from '../../Services/RsvpService';
+import UserService from '../../Services/UserService';
 import { checkJwtUser } from '../../Utils/Auth';
 import React, { Component, Fragment } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
@@ -17,21 +19,26 @@ interface State {
   havePlusOne: boolean;
   plusOneIsStayingAtHotel: boolean;
   foodAllergies: string;
+  userInfo?: NullableUser;
 }
 
 class Invitation extends Component<Props, State> {
-  state = {
-    rsvpId: undefined,
-    username: '',
-    isGoing: false,
-    isStayingAtHotel: false,
-    havePlusOne: false,
-    plusOneIsStayingAtHotel: false,
-    foodAllergies: '',
-  };
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      rsvpId: undefined,
+      username: '',
+      isGoing: false,
+      isStayingAtHotel: false,
+      havePlusOne: false,
+      plusOneIsStayingAtHotel: false,
+      foodAllergies: '',
+    };
+  }
 
-  componentDidMount() {
+  async componentDidMount() {
     const usernameFromUrl = this.props.location.pathname.replace('/', '');
+    await this.getUserInformation(usernameFromUrl);
     checkJwtUser(usernameFromUrl, () => this.props.history.push(`/verify/${usernameFromUrl}`));
     this.setState({ username: usernameFromUrl }, () => this.shouldCheckForRsvp());
   }
@@ -39,6 +46,11 @@ class Invitation extends Component<Props, State> {
   async componentDidUpdate() {
     this.shouldCheckForRsvp();
   }
+
+  getUserInformation = async (username: string) => {
+    const userInfo: NullableUser = await UserService.get(username);
+    this.setState({ userInfo });
+  };
 
   shouldCheckForRsvp = () => {
     if (this.state.username !== '' && this.state.rsvpId === undefined) {
@@ -97,6 +109,43 @@ class Invitation extends Component<Props, State> {
     this.setState({ ...this.state, [name]: value });
   };
 
+  renderPlusOneSection(): JSX.Element | undefined {
+    if (this.state.userInfo && this.state.userInfo.havePlusOne) {
+      return (
+        <Fragment>
+          <Row>
+            <Col xs={10} sm={10}>
+              <p className="invitation-rsvp-text">Levará acompanhante?</p>
+            </Col>
+            <Col xs={2} sm={2}>
+              <Input
+                name="havePlusOne"
+                type="checkbox"
+                checked={this.state.havePlusOne}
+                onChange={this.handleChange}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={10} sm={10}>
+              <p className="invitation-rsvp-text">Acompanhante ficará na pousada*?</p>
+            </Col>
+            <Col xs={2} sm={2}>
+              <Input
+                name="plusOneIsStayingAtHotel"
+                type="checkbox"
+                checked={this.state.plusOneIsStayingAtHotel}
+                onChange={this.handleChange}
+              />
+            </Col>
+          </Row>
+        </Fragment>
+      );
+    }
+
+    return undefined;
+  }
+
   renderForm(): JSX.Element {
     return (
       <div className="invitation-rsvp-container">
@@ -149,37 +198,19 @@ class Invitation extends Component<Props, State> {
                   />
                 </Col>
               </Row>
-              <Row>
-                <Col xs={10} sm={10}>
-                  <p className="invitation-rsvp-text">Levará acompanhante?</p>
-                </Col>
-                <Col xs={2} sm={2}>
-                  <Input
-                    name="havePlusOne"
-                    type="checkbox"
-                    checked={this.state.havePlusOne}
-                    onChange={this.handleChange}
-                  />
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={10} sm={10}>
-                  <p className="invitation-rsvp-text">Acompanhante ficará na pousada*?</p>
-                </Col>
-                <Col xs={2} sm={2}>
-                  <Input
-                    name="plusOneIsStayingAtHotel"
-                    type="checkbox"
-                    checked={this.state.plusOneIsStayingAtHotel}
-                    onChange={this.handleChange}
-                  />
-                </Col>
-              </Row>
+              {this.renderPlusOneSection()}
               <Row>
                 <Col>
-                  <p className="invitation-rsvp-text">
-                    Observações (ex.: restrição alimentar, nome do(a) acompanhante, etc):
-                  </p>
+                    {this.state.userInfo && this.state.userInfo.havePlusOne && (
+                      <p className="invitation-rsvp-text">
+                        Observações (ex.: restrição alimentar, nome do(a) acompanhante, etc):
+                      </p>
+                    )}
+                    {(!this.state.userInfo || !this.state.userInfo.havePlusOne) && (
+                      <p className="invitation-rsvp-text">
+                        Observações (ex.: restrições alimentares):
+                      </p>
+                    )}
                 </Col>
               </Row>
               <Row>
@@ -292,7 +323,8 @@ class Invitation extends Component<Props, State> {
                 A estadia incluirá café da manhã regional, porém, cada convidado arcará com os
                 custos das suas outras refeições, com a exceção do jantar no dia 20/02, que será
                 realizado durante a recepção do casamento. Mas, relaxe! Nas proximidades da pousada
-                existem várias opções de restaurantes que estarão disponíveis durante o fim de semana!
+                existem várias opções de restaurantes que estarão disponíveis durante o fim de
+                semana!
               </p>
               <p className="invitation-details-paragraph">
                 E... além da pousada possuir uma piscina, estaremos bem pertinho da praia de Ipioca,
@@ -320,10 +352,10 @@ class Invitation extends Component<Props, State> {
           <Row>
             <Col>
               <p className="invitation-covid-paragraph">
-                Senta que lá vem textão! Infelizmente ainda estamos no meio de uma pandemia e, por este motivo, além de
-                termos mudado o local da cerimônia e recepção para a Pousada Villa das Palmeiras,
-                onde estaremos em um ambiente aberto e ao ar-livre, traremos aos convidados as
-                seguintes recomendações para segurança de todos:
+                Senta que lá vem textão! Infelizmente ainda estamos no meio de uma pandemia e, por
+                este motivo, além de termos mudado o local da cerimônia e recepção para a Pousada
+                Villa das Palmeiras, onde estaremos em um ambiente aberto e ao ar-livre, traremos
+                aos convidados as seguintes recomendações para segurança de todos:
               </p>
               <ul>
                 <li className="invitation-covid-paragraph">
@@ -333,26 +365,27 @@ class Invitation extends Component<Props, State> {
                 </li>
                 <li className="invitation-covid-paragraph">
                   Pedimos aos que estiverem sentindo quaisquer dos sintomas da Covid-19 nos dias
-                  próximos ao casamento, isto é, febre, tosse seca, cansaço, tensão e dores musculares,
-                  dores de garganta, perda de paladar ou olfato, dificuldade respiratória ou falta
-                  de ar, pressão ou dor no peito e perda da fala ou capacidade motora, que não
-                  compareçam ao evento para evitar qualquer tipo de contágio.
+                  próximos ao casamento, isto é, febre, tosse seca, cansaço, tensão e dores
+                  musculares, dores de garganta, perda de paladar ou olfato, dificuldade
+                  respiratória ou falta de ar, pressão ou dor no peito e perda da fala ou capacidade
+                  motora, que não compareçam ao evento para evitar qualquer tipo de contágio.
                 </li>
                 <li className="invitation-covid-paragraph">
                   Se você estiver hospedado(a) na pousada, pedimos que durante todo o evento você
                   utilize apenas o banheiro de seu chalé, para diminuir o risco de contaminação.
-                  Caso não esteja hospedado(a), haverá indicação no local qual banheiro você pode
+                  Caso não esteja hospedado(a), haverá indicação no local qual banheiro você poderá
                   utilizar.
                 </li>
                 <li className="invitation-covid-paragraph">
                   Estarão disponíveis para o evento máscaras descartáveis e álcool em gel em todas
-                  as mesas e chalés, mas, ainda pedimos que cada convidado leve sua(s) próprias máscara(s) e as utilize sempre
-                  que estiverem em ambientes fechados e/ou enquanto estiverem próximos de pessoas que você não convive.
+                  as mesas e chalés, mas, ainda pedimos que cada convidado leve sua(s) próprias
+                  máscara(s) e as utilize sempre que estiverem em ambientes fechados e/ou enquanto
+                  estiverem próximos de pessoas que você não convive.
                 </li>
                 <li className="invitation-covid-paragraph">
-                  Durante a cerimônia e recepção, separaremos os assentos de acordo com o
-                  grau de convivência, por exemplo, a família que convive entre si sentará próxima e
-                  os amigos que ficarão hospedados no mesmo chalé também sentarão próximos.
+                  Durante a cerimônia e recepção, separaremos os assentos de acordo com o grau de
+                  convivência, por exemplo, a família que convive entre si sentará próxima e os
+                  amigos que ficarão hospedados no mesmo chalé também sentarão próximos.
                 </li>
                 <li className="invitation-covid-paragraph">
                   Se, por algum motivo, você descobrir que houve contato com alguém que testou
@@ -360,7 +393,10 @@ class Invitation extends Component<Props, State> {
                   pedimos que nos avisem para que informemos todos os demais convidados.
                 </li>
 
-                <p className="invitation-covid-paragraph">Agradecemos a compreensão! Se a gente se organizar direitinho, todo mundo se diverte!</p>
+                <p className="invitation-covid-paragraph">
+                  Agradecemos muito a sua compreensão e colaboração para que tenhamos uma festa
+                  segura a todos!
+                </p>
               </ul>
             </Col>
           </Row>

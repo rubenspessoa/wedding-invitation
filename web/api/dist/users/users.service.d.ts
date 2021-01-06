@@ -4,4 +4,5 @@ export declare class UsersService {
     private userModel;
     constructor(userModel: Model<UserDocument>);
     findOne(name: string): Promise<UserDocument>;
+    publiclySafeFindOne(name: string): Promise<UserDocument>;
 }

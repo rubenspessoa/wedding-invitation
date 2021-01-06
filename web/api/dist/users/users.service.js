@@ -32,6 +32,18 @@ let UsersService = class UsersService {
         }
         return user;
     }
+    async publiclySafeFindOne(name) {
+        const user = await this.userModel
+            .findOne()
+            .select(['_id', 'name', 'havePlusOne'])
+            .where('name')
+            .equals(name)
+            .exec();
+        if (!user) {
+            throw new common_1.HttpException('User not found.', common_1.HttpStatus.NOT_FOUND);
+        }
+        return user;
+    }
 };
 UsersService = __decorate([
     common_1.Injectable(),
