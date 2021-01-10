@@ -35,7 +35,7 @@ class Covid extends Component<Props> {
               <p className="invitation-covid-paragraph">
                 Primeiramente, pedimos aos que sentirem quaisquer dos sintomas* da Covid-19 nos dias
                 próximos ao casamento que não compareçam ao evento para que possamos evitar qualquer
-                tipo de contágio aos outros convidados. Teremos convidados na área de risco e, por
+                tipo de contágio aos outros convidados. Teremos convidados do grupo de risco e, por
                 isso, teremos todo o cuidado. *Estes sintomas são: febre, tosse seca, cansaço,
                 tensão e dores musculares, dores de garganta, perda de paladar ou olfato,
                 dificuldade respiratória ou falta de ar, pressão ou dor no peito e perda da fala ou

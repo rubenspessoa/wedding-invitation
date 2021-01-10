@@ -3,7 +3,7 @@ import { Jwt } from '../Models/Jwt.model';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 
-const API_URL = 'http://vanessaerubens.com/api/auth/login/';
+const API_URL = 'https://vanessaerubens.com/api/auth/login/';
 const USER_KEY = 'user';
 
 class AuthService {
