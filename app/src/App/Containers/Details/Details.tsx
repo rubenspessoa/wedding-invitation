@@ -9,6 +9,7 @@ interface Props extends RouteComponentProps<any> {}
 
 class Details extends Component<Props> {
   componentDidMount() {
+    window.scrollTo(0, 0);
     const usernameFromUrl = this.props.location.pathname.replace('/details', '').replace('/', '');
     checkJwtUser(usernameFromUrl, () => this.props.history.push(`/verify/${usernameFromUrl}`));
   }

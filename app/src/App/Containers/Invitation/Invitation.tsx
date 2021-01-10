@@ -38,6 +38,7 @@ class Invitation extends Component<Props, State> {
   }
 
   async componentDidMount() {
+    window.scrollTo(0, 0);
     const usernameFromUrl = this.props.location.pathname.replace('/', '');
     await this.getUserInformation(usernameFromUrl);
     checkJwtUser(usernameFromUrl, () => this.props.history.push(`/verify/${usernameFromUrl}`));
@@ -273,13 +274,9 @@ class Invitation extends Component<Props, State> {
               <p className="invitation-message-paragraph">
                 Também o(a) convidamos para passar o fim de semana da cerimônia conosco na pousada.
                 Para mais informações, acesse as páginas:{' '}
-      {' '}
-                         <Link to={`/${AuthService.getLoggedInUsername() || ''}/details`}>Detalhes</Link>,{' '}
-         {' '}
-                      <Link to={`/${AuthService.getLoggedInUsername() || ''}/covid`}>Covid-19</Link> e{' '}
-{' '}
-                               <Link to={`/${AuthService.getLoggedInUsername() || ''}/schedule`}>Programação</Link>
-                . Por fim, pedimos que confirme a sua presença na próxima seção desta mesma página.
+                <Link to={`/${AuthService.getLoggedInUsername() || ''}/details`}>Detalhes</Link> e{' '}
+                <Link to={`/${AuthService.getLoggedInUsername() || ''}/covid`}>Covid-19</Link>. Por
+                fim, pedimos que confirme a sua presença na próxima seção desta mesma página.
               </p>
               <p className="invitation-message-ps">
                 Traje: Esporte Fino. <br />

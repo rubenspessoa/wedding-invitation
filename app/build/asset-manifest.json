@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/static/css/main.fcec956b.chunk.css",
-    "main.js": "/static/js/main.3fd33b93.chunk.js",
-    "main.js.map": "/static/js/main.3fd33b93.chunk.js.map",
+    "main.js": "/static/js/main.53954947.chunk.js",
+    "main.js.map": "/static/js/main.53954947.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.6c638eeb.js",
     "runtime-main.js.map": "/static/js/runtime-main.6c638eeb.js.map",
-    "static/js/2.b8b3b618.chunk.js": "/static/js/2.b8b3b618.chunk.js",
-    "static/js/2.b8b3b618.chunk.js.map": "/static/js/2.b8b3b618.chunk.js.map",
+    "static/js/2.351cc16b.chunk.js": "/static/js/2.351cc16b.chunk.js",
+    "static/js/2.351cc16b.chunk.js.map": "/static/js/2.351cc16b.chunk.js.map",
     "static/js/3.9fe76a66.chunk.js": "/static/js/3.9fe76a66.chunk.js",
     "static/js/3.9fe76a66.chunk.js.map": "/static/js/3.9fe76a66.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.fcec956b.chunk.css.map": "/static/css/main.fcec956b.chunk.css.map",
-    "static/js/2.b8b3b618.chunk.js.LICENSE.txt": "/static/js/2.b8b3b618.chunk.js.LICENSE.txt",
+    "static/js/2.351cc16b.chunk.js.LICENSE.txt": "/static/js/2.351cc16b.chunk.js.LICENSE.txt",
     "static/media/Invitation.scss": "/static/media/thank-you-image.921007de.jpg",
     "static/media/index.scss": "/static/media/marsha_belle_demo_version-webfont.cceafbc4.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.6c638eeb.js",
-    "static/js/2.b8b3b618.chunk.js",
+    "static/js/2.351cc16b.chunk.js",
     "static/css/main.fcec956b.chunk.css",
-    "static/js/main.3fd33b93.chunk.js"
+    "static/js/main.53954947.chunk.js"
   ]
 }
