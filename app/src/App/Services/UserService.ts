@@ -2,7 +2,7 @@ import AuthService from './AuthService';
 import { NullableUser, User } from '../Models/User.model';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/users';
+const API_URL = 'http://vanessaerubens.com/api/users';
 
 class UserService {
   async get(username: string): Promise<NullableUser> {

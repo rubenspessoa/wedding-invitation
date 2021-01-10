@@ -2,7 +2,7 @@ import AuthService from './AuthService';
 import { NullableRsvp, Rsvp } from '../Models/Rsvp.model';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/rsvp';
+const API_URL = 'http://vanessaerubens.com/api/rsvp';
 
 class RsvpService {
   async get(name: string): Promise<NullableRsvp> {
