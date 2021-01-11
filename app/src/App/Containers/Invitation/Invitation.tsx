@@ -189,7 +189,7 @@ class Invitation extends Component<Props, State> {
               </Row>
               <Row>
                 <Col xs={10} sm={10}>
-                  <p className="invitation-rsvp-text">Ficará na pousada*?</p>
+                  <p className="invitation-rsvp-text">Ficará na pousada?</p>
                 </Col>
                 <Col xs={2} sm={2}>
                   <Input
@@ -228,7 +228,7 @@ class Invitation extends Component<Props, State> {
               <Input type="submit" value="Enviar" className="invitation-rsvp-submit" />
             </FormGroup>
           </Form>
-        </ Container>
+        </Container>
         <Container fluid>
           <Row>
             <Col className="invitation-thank-you-image">
@@ -244,6 +244,8 @@ class Invitation extends Component<Props, State> {
     return (
       <div className="invitation-image">
         <OurNavbar />
+        <h1 className="invitation-title">Vanessa & Rubens</h1>
+        <img src="/img/ourwedding_wh.gif" alt="rsvp" className="invitation-title-image" />
       </div>
     );
   };

@@ -1,10 +1,18 @@
 @import '../../../Styles/colors';
 
-.login-title,
+.login-title {
+  font-family: Marsha;
+  font-style: italic;
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+}
+
 .login-subtitle,
 .login-paragraph {
   font-family: Dosis;
-  color: $charcoal;
+  color: black;
   text-align: center;
 }
 
@@ -15,6 +23,7 @@
 .login-button-color {
   background-color: $charcoal !important;
   border-color: $charcoal !important;
+  font-family: Marsha;
 }
 
 .login-card-container {

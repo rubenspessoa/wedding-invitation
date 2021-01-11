@@ -1,8 +1,8 @@
+import './OurNavbar.scss';
 import AuthService from '../../Services/AuthService';
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Collapse, Nav, Navbar, NavbarToggler, NavItem, NavLink } from 'reactstrap';
-
 interface State {
 	isOpen: boolean;
 }
@@ -21,7 +21,7 @@ class OurNavbar extends Component<{}, State> {
       <Navbar color="light" light expand="md">
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
-          <Nav className="ml-auto" navbar>
+          <Nav className="ml-auto navbar-font" navbar>
             <NavItem>
               <NavLink tag={Link} to={`/${AuthService.getLoggedInUsername() || ''}`}>
                 Convite
@@ -37,7 +37,7 @@ class OurNavbar extends Component<{}, State> {
                 Covid-19
               </NavLink>
             </NavItem>
-            <NavItem >
+            <NavItem>
               <NavLink tag={Link} to={`/${AuthService.getLoggedInUsername() || ''}/gifts`}>
                 Presentes
               </NavLink>
