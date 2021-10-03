@@ -40,14 +40,13 @@ class Gifts extends Component<Props> {
                 Banco 260 - Nu Pagamentos S.A. <br />
                 Agência: 0001 <br />
                 Conta: 7980621-6 <br />
-                CPF: 099.041.464-70. <br />
+                CPF (PIX): 099.041.464-70. <br />
                 Nome: Vanessa Soares Vieira
               </p>
               <p className="invitation-gifts-paragraph">
                 E, para entregar seu presente, após efetuar o depósito ou transferência, pedimos que
                 envie uma mensagem para um dos nossos whatsapps (O de Vanessa é +43 681 20652392 ou
-                de Rubens que é +43 677 63041761) para que possamos fazer uma chamada e te agradecer
-                direitinho.
+                de Rubens que é +43 677 63041761) para que possamos fazer uma chamada e agradecer pelo seu gesto.
               </p>
               <p className="invitation-gifts-paragraph">
                 Desde já agradecemos o carinho de vocês, mas saibam que ficaremos muito felizes só

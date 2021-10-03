@@ -34,7 +34,7 @@ class Details extends Component<Props> {
               <p className="invitation-details-paragraph">
                 A estadia se dará na Pousada Villa das Palmeiras, que fica localizada na rodovia
                 AL-101 NORTE, S/N - Ipioca, AL. CEP 57039-700. Iniciaremos o check-in às 14:00 do
-                dia 19/02 e faremos checkout às 12:00 do dia 21/02. Como a cerimônia e a recepção
+                dia 10/12 e faremos checkout às 12:00 do dia 12/12. Como a cerimônia e a recepção
                 serão feitas no mesmo local, poderemos curtir a festa, dormir, tomar um belo café da
                 manhã no domingo e voltar para casa seguros!
               </p>
@@ -48,7 +48,7 @@ class Details extends Component<Props> {
             <Col xs={12} sm={12} md={6} lg={6} xl={6} className="my-auto">
               <p className="invitation-details-paragraph">
                 Para fazer sua reserva, cada convidado deverá nos transferir* o valor de
-                R$125,00/pessoa até o dia 20 de Janeiro de 2021. Nós repassaremos o valor para o
+                R$125,00/pessoa até o dia 20 de Novembro de 2021. Nós repassaremos o valor para o
                 dono da pousada e distribuiremos cada convidado e seus acompanhantes nos chalés para
                 o maior conforto de todos.
               </p>
@@ -56,7 +56,7 @@ class Details extends Component<Props> {
             <Col xs={12} sm={12} md={6} lg={6} xl={6} className="my-auto">
               <p className="invitation-details-paragraph">
                 A estadia incluirá café da manhã regional, porém, cada convidado arcará com os
-                custos das suas outras refeições, com a exceção do jantar no dia 20/02, que será
+                custos das suas outras refeições, com a exceção do jantar no dia 11/12, que será
                 realizado durante a recepção do casamento. Mas, relaxe! Nas proximidades da pousada
                 existem várias opções de restaurantes que estarão disponíveis durante o fim de
                 semana!
@@ -85,7 +85,7 @@ class Details extends Component<Props> {
                 Banco 260 - Nu Pagamentos S.A. <br />
                 Agência: 0001 <br />
                 Conta: 7980621-6 <br />
-                CPF: 099.041.464-70. <br />
+                CPF (PIX): 099.041.464-70. <br />
                 Nome: Vanessa Soares Vieira
               </p>
             </Col>

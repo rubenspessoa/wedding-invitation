@@ -270,7 +270,7 @@ class Invitation extends Component<Props, State> {
             <Col>
               <p className="invitation-message-paragraph">
                 Convidamos você para a cerimônia do nosso casamento que será realizada às 15:00 do
-                dia 20 de Fevereiro de 2021 na Pousada Villa das Palmeiras em Ipioca/AL. Após a
+                dia 11 de Dezembro de 2021 na Pousada Villa das Palmeiras em Ipioca/AL. Após a
                 cerimônia, os convidados serão recepcionados no mesmo local.
               </p>
               <p className="invitation-message-paragraph">

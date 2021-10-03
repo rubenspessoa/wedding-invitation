@@ -27,7 +27,7 @@ class Covid extends Component<Props> {
           <Row>
             <Col>
               <p className="invitation-covid-paragraph">
-                Senta que lá vem textão! Infelizmente ainda estamos no meio de uma pandemia e, por
+                Senta que lá vem textão! Apesar do estágio avançado da vacinação, infelizmente ainda estamos no meio de uma pandemia e, por
                 este motivo, além de termos mudado o local da cerimônia e recepção para a Pousada
                 Villa das Palmeiras, onde estaremos em um ambiente aberto e ao ar-livre, traremos
                 aos convidados as seguintes recomendações:
@@ -47,15 +47,11 @@ class Covid extends Component<Props> {
                 fazê-lo por motivos de força maior, pedimos que se atentem ao distanciamento social.
               </p>
               <p className="invitation-covid-paragraph">
-                Caso planeje se hospedar na pousada, pedimos que, durante todo o evento, utilize
-                apenas o banheiro de seu chalé para diminuirmos o risco de contaminação. Caso não
-                esteja hospedado(a), haverá indicação no local qual banheiro você poderá utilizar.
-              </p>
-              <p className="invitation-covid-paragraph">
                 Estarão disponíveis para o evento máscaras descartáveis e álcool em gel em todas as
-                mesas e chalés, mas, ainda pedimos que cada convidado leve suas próprias máscaras e
-                as utilize sempre que estiverem em ambientes fechados e/ou enquanto estiverem
-                próximos de pessoas que você não convive.
+                mesas e chalés. O uso das máscaras não é obrigatório caso você já esteja vacinado com 
+                duas doses e não apresente sintomas de doença, porém o uso é recomendado para todos os
+                outros casos. Para estes outros casos, pedimos que os convidados levem suas próprias 
+                máscaras e as utilizem em ambientes fechados e/ou enquanto estiverem próximos de pessoas que não convivem.
               </p>
               <p className="invitation-covid-paragraph">
                 Durante a cerimônia e recepção, separaremos os assentos de acordo com o grau de
